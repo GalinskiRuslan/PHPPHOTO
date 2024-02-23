@@ -16,7 +16,8 @@ class PhotoController extends Controller
     }
     public function store(Request $request){
         $photo = $request->file('photo');
-        dd($request->all(), $photo);
+        // $path = $photo->storeAs('photos', 'photo.' . $photo->getClientOriginalExtension(), 'public');
+        dd($photo);
 
 
     }
