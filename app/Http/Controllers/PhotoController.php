@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PhotoStoreReqest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PhotoController extends Controller
 {
@@ -15,9 +17,13 @@ class PhotoController extends Controller
         return view("photos.create", compact("photo"));
     }
     public function store(Request $request){
-        $photo = $request->file('photo');
-        // $path = $photo->storeAs('photos', 'photo.' . $photo->getClientOriginalExtension(), 'public');
-        dd($photo);
+        if($request->hasFile('image')){
+            $path = $request->file('image')->store('photos');
+            return back()->with(['success' => 'Фото добавлено', 'path' => '/storage/'. $path]);
+        }
+        else {
+            dd($request->image->getErrorMessage());
+        }
 
 
     }
@@ -33,5 +39,10 @@ class PhotoController extends Controller
     }
     public function destroy(){
 
+    }
+    public function photoView(){
+        $directory = '/photos';
+        $files = Storage::allFiles($directory);
+        return view("photoView.index", compact("files"));
     }
 }

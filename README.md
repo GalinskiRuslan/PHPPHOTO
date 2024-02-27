@@ -68,5 +68,10 @@ $request->validate(['nameResData'=>['required', 'string', 'min:3', 'max:35' ]]),
 а для его применения в контроллере, просто в методе вызываем реквест с моделью этого класса пример: public function store(NameRequest $request){ retutn asdawd}
 
 **_Работа с файлами_**
+Проблема с лимитом на загружаемые файлы решается в php.ini который находиться не в проекте,
+а в файлах самого php. В файле ишем строчку с upload_max_filesize и устанавливаем значения
 
 
+***artisan***
+чтобы посмотреть все команды artisan пишем php artisan list
+для работы с файлами в папке storage используется  Storage::allFiles($directory); 

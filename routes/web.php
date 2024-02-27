@@ -22,4 +22,6 @@ Route::get('/hello', function () {
     return view('photos.index', compact("photos"));
 });
 
+Route::get("/photoView", [PhotoController::class, 'photoView'] )->name('photoView');
+
 
