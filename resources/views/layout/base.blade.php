@@ -14,7 +14,7 @@
     @include('layout.footer')
 </body>
 
-
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 @stack('js')
 @stack('css')
 </html>

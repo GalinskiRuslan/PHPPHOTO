@@ -1,5 +1,7 @@
 <?php
 
+use App\Providers\CalculateServiceProvider;
+use App\Services\CalculateSumService;
 use Illuminate\Support\Facades\Facade;
 use Illuminate\Support\ServiceProvider;
 
@@ -169,6 +171,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\TelescopeServiceProvider::class,
+        App\Providers\CalculateServiceProvider::class,
     ])->toArray(),
 
     /*

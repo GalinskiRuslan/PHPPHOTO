@@ -5,5 +5,5 @@
 
 @section('content')
     <h1>Create</h1>
-    <x-form name="desc"></x-form>
+    <x-form name="desc" action="{{ route('photos.store') }}"></x-form>
 @endSection
