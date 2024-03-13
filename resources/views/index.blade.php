@@ -4,5 +4,7 @@
 @section('title', 'MyProject || Main')
 
 @section('content')
-    <h1>Hello</h1>
+    <div class="container">
+        <h1>CodeArt</h1>
+    </div>
 @endSection

@@ -49,7 +49,6 @@ class PhotoController extends Controller
     }
     public function photoView()
     {
-        dd(DB::table("users")->get());
         $directory = '/photos';
         $files = Storage::allFiles($directory);
         return view("photoView.index", compact("files"));

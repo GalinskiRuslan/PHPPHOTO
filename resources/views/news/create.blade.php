@@ -4,6 +4,13 @@
 
 @section('content')
     <h3>Добавление новости</h3>
+    @if ($errors->any())
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    @endif
     <form name="desc" action="{{ route('news.store') }}" method="POST">
         @csrf
         @method('POST')

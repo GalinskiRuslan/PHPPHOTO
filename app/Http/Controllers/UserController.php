@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -27,7 +30,22 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if(Auth::check()){
+            return redirect(route('user.cabinet'));
+        }
+        $validateFields = $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
+            'name'=> 'required'
+        ]);
+        $user = User::create($validateFields);
+        if ($user) {
+            Auth::login($user);
+            return redirect(route('cabinet'));
+        }
+        else {}
+        return back()->withErrors( ['formError'=>'Ошибка регистрации']);
+
     }
 
     /**

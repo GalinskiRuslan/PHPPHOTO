@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\News;
+use App\Services\ScanDoc;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class NewsController extends Controller
 {
@@ -51,9 +53,11 @@ class NewsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(News $news)
+    public function edit(News $news, ScanDoc $scanDoc)
     {
-        //
+        $path = 'photo1710151256.jpeg';
+        // dd($path);
+        dd($scanDoc->scan($path));
     }
 
     /**
