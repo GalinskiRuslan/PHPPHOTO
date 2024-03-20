@@ -1,12 +1,13 @@
 @extends('layout.base')
 
 
-@section('title', 'Вход')
+@section('title', 'Личный кабинет')
 
 @section('content')
     <div class="login-background">
-
-    CABINET
+        <p>id:{{$user->id}}</p>
+        <p>Name: {{$user->name}}</p>
+        CABINET
     </div>
 @endsection
 @push('css')

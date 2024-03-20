@@ -1,27 +1,44 @@
-html
-{
+html {
     height: 100%;
     scroll-behavior: smooth;
 }
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
 .container {
     max-width: 1200px;
     margin: 0 auto;
 }
-.page{
+
+.page {
     overflow: hidden;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
 }
-footer{
+
+footer {
     margin-top: auto;
 }
+
 main {
     width: 100%;
-    height: 90vh;
+    min-height: 90vh;
+}
+
+.item-card {
+    background: #6f42c1;
+    border-radius: 30px;
+    padding: 30px;
+    margin: 30px 0;
+}
+.item-title{
+    font-size: 22px;
+    color: #0d1116;
+    font-weight: 700;
+    text-align: center;
 }

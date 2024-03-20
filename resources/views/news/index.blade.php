@@ -4,7 +4,7 @@
 @section('content')
     <h3>Новости</h3>
     <a href="{{ route('news.create') }}"><button>Добавить новость</button></a>
-    <a href="{{ route('news.edit', ['news' => $news[0]]) }}">Hello</a>
+{{--    <a href="{{ route('news.edit', ['news' => $news[0]]) }}">Hello</a>--}}
     @if (session('success'))
         <div style="font-size: 32px; color:green">
             {{ session('success') }}

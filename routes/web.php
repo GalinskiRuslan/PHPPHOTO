@@ -6,7 +6,8 @@ use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\NewsController;
 
 
-Route::view('/', 'index')->name('home');
+$products = \App\Models\Product::all();
+Route::view('/', 'index', compact('products'))->name('home');
 
 // Фото
 
@@ -34,15 +35,19 @@ Route::get('/calc', [PhotoController::class, 'someCalculate'])->name('calc');
 #маршруты Аутинфикации и рeгистрации:
 
 Route::name('user.')->group(function () {
-    Route::view('/cabinet', 'user.cabinet')->middleware('auth')->name('cabinet');
+    Route::get('/cabinet',
+        [\App\Http\Controllers\UserController::class, 'show'])->middleware('auth')->name('cabinet');
     Route::get('/login', function () {
         if (Auth::check()) {
             return redirect(route('user.cabinet'));
         }
         return view('login');
     })->name('login');
-    Route::post('/login', []);
-    Route::get('/logout', [])->name('logout');
+    Route::post('/login', [\App\Http\Controllers\UserController::class, 'login']);
+    Route::get('/logout', function () {
+        Auth::logout();
+        return redirect('/');
+    })->name('logout');
     Route::get('/registration', function () {
         if (Auth::check()) {
             return redirect('cabinet');
