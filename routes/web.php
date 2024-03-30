@@ -55,4 +55,5 @@ Route::name('user.')->group(function () {
         return view('registration');
     })->name('registration');
     Route::post('/registration', [\App\Http\Controllers\UserController::class, 'store']);
+    Route::get('/forgotPassword', [\App\Http\Controllers\UserController::class, 'forgotPassword'])->name('forgotPassword ');
 });

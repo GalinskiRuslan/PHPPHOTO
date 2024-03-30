@@ -91,4 +91,9 @@ class UserController extends Controller
         return back()->withErrors(['email' => 'Не удалось авторизоваться']);
 
     }
+
+    public function forgotPassword()
+    {
+        dd('hello');
+    }
 }

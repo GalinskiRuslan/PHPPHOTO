@@ -79,6 +79,10 @@ $request->validate(['nameResData'=>['required', 'string', 'min:3', 'max:35' ]]),
 а в файлах самого php. В файле ишем строчку с upload_max_filesize и устанавливаем значения
 для работы с файлами в папке storage используется Storage::allFiles($directory);
 
+php artisan storage:link
+
+FILESYSTEM_DISK=public нужно установить в .env
+
 **_artisan_**
 чтобы посмотреть все команды artisan пишем php artisan list
 
