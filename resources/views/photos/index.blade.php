@@ -7,13 +7,19 @@
             {{ session('success') }}
         </div>
     @endif
-    <a href="{{ route('photos.create') }}"><button> Добавить</button></a>
+    <a href="{{ route('photos.create') }}">
+        <button> Добавить</button>
+    </a>
     @if (gettype($files) == 'array' && count($files) > 0)
         @foreach ($files as $file)
             @if (gettype($file) == 'object')
-                <p><a href="{{ route('photos.show', $file) }}">{{ $file }}</a></p>
+                <p><a href="{{ route('photos.show', $file) }}">
+                        <img src="/storage/{{ $file }}" style="max-width: 600px"/></a></p>
             @else
-                <p><a href="{{ route('photos.show', substr($file, 7)) }}">{{ $file }}</a></p>
+                <p><a href="{{ route('photos.show', substr($file, 7)) }}">
+                        <img src="/storage/{{ $file }}" style="max-width: 600px"/>
+                    </a>
+                </p>
             @endif
         @endforeach
     @else

@@ -7,7 +7,9 @@ use App\Http\Controllers\NewsController;
 
 
 $products = \App\Models\Product::all();
-Route::view('/', 'index', compact('products'))->name('home');
+$categories = \App\Models\Category::all();
+$brands = \App\Models\Brand::all();
+Route::view('/', 'index', compact('products', 'categories', 'brands'))->name('home');
 
 // Фото
 
@@ -28,7 +30,7 @@ Route::resource('news', NewsController::class)->names('news');
 //     return view('photos.index', compact("photos"));
 // });
 
-Route::get("/photoView", [PhotoController::class, 'photoView'])->name('photoView');
+//Route::get("/photoView", [PhotoController::class, 'photoView'])->name('photoView');
 
 Route::get('/calc', [PhotoController::class, 'someCalculate'])->name('calc');
 

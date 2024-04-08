@@ -13,7 +13,9 @@
 <body>
 <div class="page">
     <header>@include('layout.header')</header>
-    <main>@yield('content')</main>
+    <main>
+        <div id="container" class="container">@yield('content')</div>
+    </main>
     <footer>@include('layout.footer')</footer>
 </div>
 </body>
