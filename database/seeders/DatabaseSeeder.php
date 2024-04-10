@@ -4,8 +4,12 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Brand;
+use App\Models\Card;
 use App\Models\Category;
+use App\Models\Desk;
+use App\Models\DeskList;
 use App\Models\Product;
+use App\Models\Task;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -25,6 +29,10 @@ class DatabaseSeeder extends Seeder
         // ]);
         Brand::factory(20)->create();
         Product::factory(20)->has(Category::factory(rand(1, 3)))->create();
+        Desk::factory(7)->create();
+        DeskList::factory(4)->create();
+        Card::factory(24)->create();
+        Task::factory(122)->create();
 
     }
 }

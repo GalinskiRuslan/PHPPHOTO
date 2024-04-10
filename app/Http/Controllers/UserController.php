@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Password;
 
 class UserController extends Controller
 {
@@ -85,10 +86,43 @@ class UserController extends Controller
     {
         $formFields = $request->only([
             'email', 'password']);
-        if (Auth::attempt($formFields)) {
+        if (Auth::attempt($formFields, $request->boolean('remember'))) {
+            $request->session()->regenerate();
             return redirect()->intended(route('user.cabinet'));
         }
         return back()->withErrors(['email' => 'Не удалось авторизоваться']);
 
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect()->route('home');
+    }
+
+    public function forgotPassword()
+    {
+        return view('forgot-password');
+    }
+
+    public function resetPassword(Request $request)
+    {
+
+        $request->validate([
+            'email' => ['required', 'email'],
+        ]);
+        $status = Password::sendResetLink($request->only('email'));
+        if ($status === Password::RESET_LINK_SENT) {
+            return back()->with('status', trans($status));
+        }
+        return back()->withInput($request->only('email'))->withErrors(['email' => trans($status)]);
+    }
+
+    public function testApi()
+    {
+//        dd(response()->json(['hi'=>'bitch']));
+        return response()->json(['hello' => 'world']);
     }
 }

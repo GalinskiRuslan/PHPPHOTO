@@ -18,15 +18,22 @@
             <div class="form-group">
                 <label>Пароль *</label>
                 <input required type="password" name="password" placeholder="Введите ваш пароль" id="password" value="">
-                <button id="glass" type="button" class="btn-password"><img style="width: 20px" src="/imgs/icons/free-icon-eye-158746.png" /></button>
+                <button id="glass" type="button" class="btn-password"><img style="width: 20px"
+                                                                           src="/imgs/icons/free-icon-eye-158746.png"/>
+                </button>
                 @error('password')
                 <div class="error-message">{{$message}}</div>
                 @enderror
+            </div>
+            <div>
+                <label>Запомнить меня</label>
+                <input type="checkbox" id="remember" name="remember">
             </div>
             <button class="btn-submit" type="submit">Войти</button>
             <a href="{{route('user.registration')}}">
                 <button type="button" class="btn-submit">Регистрация</button>
             </a>
+            <a href="{{route('user.forgotPassword')}}">Забыли пароль?</a>
         </form>
 
     </div>

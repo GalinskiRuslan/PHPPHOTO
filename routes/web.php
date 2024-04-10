@@ -46,10 +46,9 @@ Route::name('user.')->group(function () {
         return view('login');
     })->name('login');
     Route::post('/login', [\App\Http\Controllers\UserController::class, 'login']);
-    Route::get('/logout', function () {
-        Auth::logout();
-        return redirect('/');
-    })->name('logout');
+    Route::post('/logout', [\App\Http\Controllers\UserController::class, 'logout'])->name('logout');
+    Route::get('/forgot-password', [\App\Http\Controllers\UserController::class, 'forgotPassword'])->name('forgotPassword');
+    Route::post('/forgot-password', [\App\Http\Controllers\UserController::class, 'resetPassword'])->name('resetPassword');
     Route::get('/registration', function () {
         if (Auth::check()) {
             return redirect('cabinet');
@@ -58,3 +57,4 @@ Route::name('user.')->group(function () {
     })->name('registration');
     Route::post('/registration', [\App\Http\Controllers\UserController::class, 'store']);
 });
+Route::get('/reset-password', [\App\Http\Controllers\UserController::class, ''])->name('password.reset');
